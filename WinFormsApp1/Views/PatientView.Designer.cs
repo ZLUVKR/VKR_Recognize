@@ -43,12 +43,13 @@
             this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ProcessingState = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.inputDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.imagePathDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ImagePath = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.сonclusionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.doctorNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.endDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataSource = new System.Windows.Forms.BindingSource(this.components);
             this.grpFind = new System.Windows.Forms.GroupBox();
+            this.btnClear = new System.Windows.Forms.Button();
             this.btnRefresh = new System.Windows.Forms.Button();
             this.chBox = new System.Windows.Forms.CheckBox();
             this.cmbInputDate = new System.Windows.Forms.ComboBox();
@@ -57,7 +58,6 @@
             this.lblPatientName = new System.Windows.Forms.Label();
             this.cmbProcState = new System.Windows.Forms.ComboBox();
             this.lblProcState = new System.Windows.Forms.Label();
-            this.btnClear = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataSource)).BeginInit();
@@ -66,6 +66,7 @@
             // 
             // panel1
             // 
+            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel1.Controls.Add(this.lblReport);
             this.panel1.Controls.Add(this.btnReport);
             this.panel1.Controls.Add(this.lblOpen);
@@ -112,6 +113,7 @@
             this.btnCreate.Size = new System.Drawing.Size(50, 60);
             this.btnCreate.TabIndex = 0;
             this.btnCreate.UseVisualStyleBackColor = false;
+            this.btnCreate.Click += new System.EventHandler(this.btnCreate_Click);
             // 
             // dataGridView1
             // 
@@ -120,7 +122,6 @@
             this.dataGridView1.AutoGenerateColumns = false;
             this.dataGridView1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
-            this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
@@ -136,7 +137,7 @@
             this.Id,
             this.ProcessingState,
             this.inputDateDataGridViewTextBoxColumn,
-            this.imagePathDataGridViewTextBoxColumn,
+            this.ImagePath,
             this.сonclusionDataGridViewTextBoxColumn,
             this.doctorNameDataGridViewTextBoxColumn,
             this.endDateDataGridViewTextBoxColumn});
@@ -194,11 +195,11 @@
             this.inputDateDataGridViewTextBoxColumn.HeaderText = "Дата приема";
             this.inputDateDataGridViewTextBoxColumn.Name = "inputDateDataGridViewTextBoxColumn";
             // 
-            // imagePathDataGridViewTextBoxColumn
+            // ImagePath
             // 
-            this.imagePathDataGridViewTextBoxColumn.DataPropertyName = "ImagePath";
-            this.imagePathDataGridViewTextBoxColumn.HeaderText = "R - снимок";
-            this.imagePathDataGridViewTextBoxColumn.Name = "imagePathDataGridViewTextBoxColumn";
+            this.ImagePath.DataPropertyName = "ImagePath";
+            this.ImagePath.HeaderText = "R - снимок";
+            this.ImagePath.Name = "ImagePath";
             // 
             // сonclusionDataGridViewTextBoxColumn
             // 
@@ -239,6 +240,17 @@
             this.grpFind.Size = new System.Drawing.Size(829, 134);
             this.grpFind.TabIndex = 2;
             this.grpFind.TabStop = false;
+            // 
+            // btnClear
+            // 
+            this.btnClear.BackColor = System.Drawing.Color.White;
+            this.btnClear.Location = new System.Drawing.Point(727, 16);
+            this.btnClear.Name = "btnClear";
+            this.btnClear.Size = new System.Drawing.Size(75, 23);
+            this.btnClear.TabIndex = 8;
+            this.btnClear.Text = "Сбросить";
+            this.btnClear.UseVisualStyleBackColor = false;
+            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
             // 
             // btnRefresh
             // 
@@ -319,17 +331,6 @@
             this.lblProcState.TabIndex = 0;
             this.lblProcState.Text = "Статус обработки";
             // 
-            // btnClear
-            // 
-            this.btnClear.BackColor = System.Drawing.Color.White;
-            this.btnClear.Location = new System.Drawing.Point(727, 16);
-            this.btnClear.Name = "btnClear";
-            this.btnClear.Size = new System.Drawing.Size(75, 23);
-            this.btnClear.TabIndex = 8;
-            this.btnClear.Text = "Сбросить";
-            this.btnClear.UseVisualStyleBackColor = false;
-            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
-            // 
             // PatientView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -340,9 +341,10 @@
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.panel1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
             this.Name = "PatientView";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Lung Care";
+            this.Text = "LungCare";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
@@ -362,15 +364,6 @@
         private Button btnCreate;
         private DataGridView dataGridView1;
         private BindingSource dataSource;
-        private DataGridViewTextBoxColumn ProcessingStateAsText;
-        private DataGridViewTextBoxColumn patientNameDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn Id;
-        private DataGridViewTextBoxColumn ProcessingState;
-        private DataGridViewTextBoxColumn inputDateDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn imagePathDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn сonclusionDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn doctorNameDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn endDateDataGridViewTextBoxColumn;
         private GroupBox grpFind;
         private Label lblProcState;
         private Button btnRefresh;
@@ -381,5 +374,14 @@
         private Label lblPatientName;
         private ComboBox cmbProcState;
         private Button btnClear;
+        private DataGridViewTextBoxColumn ProcessingStateAsText;
+        private DataGridViewTextBoxColumn patientNameDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn Id;
+        private DataGridViewTextBoxColumn ProcessingState;
+        private DataGridViewTextBoxColumn inputDateDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn ImagePath;
+        private DataGridViewTextBoxColumn сonclusionDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn doctorNameDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn endDateDataGridViewTextBoxColumn;
     }
 }

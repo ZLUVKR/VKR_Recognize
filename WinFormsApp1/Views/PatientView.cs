@@ -94,5 +94,34 @@ namespace Recognize.Views
             chBox.Checked = false;
 
         }
+
+        private void btnCreate_Click(object sender, EventArgs e)
+        {
+            if (dataGridView1.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Необходимо выбрать строку, которую нужно открыть", "Предупреждение", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            var imagePath = dataGridView1.SelectedRows[0].Cells["ImagePath"].Value.ToString();
+            if (string.IsNullOrEmpty(imagePath))
+            {
+                MessageBox.Show("Запись не привязана к рентгеновскому снимку, открыть форму невозможно", "Предупреждение", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            var id = Convert.ToInt64(dataGridView1.SelectedRows[0].Cells["Id"].Value.ToString());
+
+            var record = Presenter.Document.Where(x => x.Id == id).First();
+
+            DetailImageView detailImageView = new DetailImageView(record, CurrentDoctor);
+            detailImageView.FormClosed += FormClosed;
+            detailImageView.Show();
+            Hide();
+        }
+
+        public void FormClosed(object sender, FormClosedEventArgs e)
+        {
+            this.Show();
+        }
     }
 }
