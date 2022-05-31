@@ -2,6 +2,9 @@
 
 namespace Recognize.DA
 {
+    /// <summary>
+    /// Базовый дата аксес 
+    /// </summary>
     internal class BaseDA
     {
         private const string DbName = @"C:\temp\db.xlsx;";

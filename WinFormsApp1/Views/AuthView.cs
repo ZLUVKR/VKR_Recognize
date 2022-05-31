@@ -1,5 +1,5 @@
-﻿using System.Security.Cryptography;
-using System.Text;
+﻿using Recognize.BL;
+using Recognize.DA;
 
 namespace Recognize.Views
 {
@@ -14,14 +14,15 @@ namespace Recognize.Views
             get { return _doctorDA ??= new DoctorDA(); }
         }
 
+        private GeneralBL _generalBL;
+        private GeneralBL GeneralBL
+        {
+            get { return _generalBL ??= new GeneralBL(); }
+        }
+
         public AuthView()
         {
             InitializeComponent();
-        }
-
-        private string GetMD5Hash(string text)
-        {
-            return Convert.ToBase64String(MD5.Create().ComputeHash(Encoding.UTF8.GetBytes(text)));
         }
 
         private void authBtn_Click(object sender, EventArgs e)
@@ -38,7 +39,7 @@ namespace Recognize.Views
                 return;
             }
             var login = authLoginTxt.Text;
-            var password = GetMD5Hash(authPassTxt.Text);
+            var password = GeneralBL.GetMD5Hash(authPassTxt.Text);
             var authResult = DoctorDA.TryAuth(login, password, out _currentDoctor);
             if (authResult)
                 MessageBox.Show($"Добро пожаловать, {_currentDoctor.FullName}");
@@ -67,15 +68,9 @@ namespace Recognize.Views
             }
 
             var login = regLoginTxt.Text;
-            var password = GetMD5Hash(regPasswordTxt.Text);
+            var password = GeneralBL.GetMD5Hash(regPasswordTxt.Text);
             var fio = regFioTxt.Text;
             DoctorDA.TryReg(fio, login, password);
         }
-
-
-
-
-
-
     }
 }

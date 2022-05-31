@@ -1,9 +1,11 @@
-﻿using Recognize.DA;
-using System.Data;
+﻿using System.Data;
 using System.Data.Odbc;
 
-namespace Recognize
+namespace Recognize.DA
 {
+    /// <summary>
+    /// Доступ к данным таблицы доктора
+    /// </summary>
     internal class DoctorDA : BaseDA
     {
         /// <summary>
