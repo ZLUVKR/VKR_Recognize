@@ -1,11 +1,9 @@
-﻿using System.Data;
-using System.Data.Odbc;
-using System.Security.Cryptography;
+﻿using System.Security.Cryptography;
 using System.Text;
 
 namespace Recognize.Views
 {
-    public partial class Auth : Form
+    public partial class AuthView : Form
     {
 
         private Entities.Doctor _currentDoctor;
@@ -13,10 +11,10 @@ namespace Recognize.Views
         private DoctorDA _doctorDA;
         private DoctorDA DoctorDA
         {
-            get { return _doctorDA ?? (_doctorDA = new DoctorDA()); }
+            get { return _doctorDA ??= new DoctorDA(); }
         }
 
-        public Auth()
+        public AuthView()
         {
             InitializeComponent();
         }

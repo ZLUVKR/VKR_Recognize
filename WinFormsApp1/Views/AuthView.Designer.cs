@@ -1,6 +1,6 @@
 ﻿namespace Recognize.Views
 {
-    partial class Auth
+    partial class AuthView
     {
         /// <summary>
         /// Required designer variable.
