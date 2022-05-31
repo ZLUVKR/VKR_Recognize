@@ -1,8 +1,8 @@
 namespace Recognize.Views
 {
-    public partial class ShowInfoForm : Form
+    public partial class PatientView : Form
     {
-        public ShowInfoForm()
+        public PatientView()
         {
             InitializeComponent();
         }
