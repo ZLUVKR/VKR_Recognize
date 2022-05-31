@@ -1,3 +1,6 @@
+using Recognize.Views;
+
+
 namespace Recognize
 {
     internal static class Program
