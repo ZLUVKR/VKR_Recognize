@@ -8,6 +8,8 @@ namespace Recognize.Views
 
         private Entities.Doctor _currentDoctor;
 
+        private ErrorProvider _errorProvider;
+
         private DoctorDA _doctorDA;
         private DoctorDA DoctorDA
         {
@@ -23,54 +25,87 @@ namespace Recognize.Views
         public AuthView()
         {
             InitializeComponent();
+            _errorProvider = new ErrorProvider();
+            _errorProvider.BlinkStyle = ErrorBlinkStyle.NeverBlink;
         }
 
+        /// <summary>
+        /// Авторизация
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void authBtn_Click(object sender, EventArgs e)
         {
-            var errProvider = new ErrorProvider();
+            _errorProvider.Clear();
+            bool check = false;
             if (string.IsNullOrWhiteSpace(authPassTxt.Text))
             {
-                errProvider.SetError(authPassTxt, "Не введен пароль");
-                return;
+                _errorProvider.SetError(authPassTxt, "Не введен пароль");
+                check = true;
             }
             if (string.IsNullOrWhiteSpace(authLoginTxt.Text))
             {
-                errProvider.SetError(authLoginTxt, "Не введен логин");
+                _errorProvider.SetError(authLoginTxt, "Не введен логин");
+                check = true;
+            }
+            if (check)
+            {
+                MessageBox.Show("Проверьте корректность введенных данных", "Предупреждение", MessageBoxButtons.OK,MessageBoxIcon.Warning);
                 return;
             }
             var login = authLoginTxt.Text;
             var password = GeneralBL.GetMD5Hash(authPassTxt.Text);
             var authResult = DoctorDA.TryAuth(login, password, out _currentDoctor);
             if (authResult)
-                MessageBox.Show($"Добро пожаловать, {_currentDoctor.FullName}");
+            {
+                MessageBox.Show($"Добро пожаловать, {_currentDoctor.FullName}", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                PatientView patientView = new PatientView();
+                patientView.CurrentDoctor = _currentDoctor;
+                patientView.Show();
+                Hide();
+            }
             else
-                MessageBox.Show("Не удалось войти, неверный логин/пароль");
+                MessageBox.Show("Не удалось войти, неверный логин/пароль", "Предупреждение", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 
         }
 
+        /// <summary>
+        /// Регистрация
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void buttonReg_Click(object sender, EventArgs e)
         {
-            var errProvider = new ErrorProvider();
+            _errorProvider.Clear();
+            bool check = false;
             if (string.IsNullOrWhiteSpace(regPasswordTxt.Text))
             {
-                errProvider.SetError(regPasswordTxt, "Не введен пароль");
-                return;
+                _errorProvider.SetError(regPasswordTxt, "Не введен пароль");
+                check = true;
             }
             if (string.IsNullOrWhiteSpace(regLoginTxt.Text))
             {
-                errProvider.SetError(regLoginTxt, "Не введен логин");
-                return;
+                _errorProvider.SetError(regLoginTxt, "Не введен логин");
+                check = true;
             }
             if (string.IsNullOrWhiteSpace(regFioTxt.Text))
             {
-                errProvider.SetError(regFioTxt, "Не введен ФИО");
+                _errorProvider.SetError(regFioTxt, "Не введен ФИО");
+                check = true;
+            }
+            if (check)
+            {
+                MessageBox.Show("Проверьте корректность введенных данных", "Предупреждение", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-
             var login = regLoginTxt.Text;
             var password = GeneralBL.GetMD5Hash(regPasswordTxt.Text);
             var fio = regFioTxt.Text;
-            DoctorDA.TryReg(fio, login, password);
+            if (DoctorDA.TryReg(fio, login, password))
+                MessageBox.Show("Пользователь успешно зарегистрирован", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            else
+                MessageBox.Show("Пользователь с таким логином уже есть в системе", "Предупреждение", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            ;
         }
     }
 }

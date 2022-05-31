@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AuthView));
             this.authBtn = new System.Windows.Forms.Button();
             this.authLoginTxt = new System.Windows.Forms.TextBox();
             this.authPassTxt = new System.Windows.Forms.MaskedTextBox();
@@ -50,7 +51,7 @@
             // 
             // authBtn
             // 
-            this.authBtn.Location = new System.Drawing.Point(242, 54);
+            this.authBtn.Location = new System.Drawing.Point(115, 144);
             this.authBtn.Name = "authBtn";
             this.authBtn.Size = new System.Drawing.Size(75, 23);
             this.authBtn.TabIndex = 0;
@@ -60,14 +61,14 @@
             // 
             // authLoginTxt
             // 
-            this.authLoginTxt.Location = new System.Drawing.Point(94, 49);
+            this.authLoginTxt.Location = new System.Drawing.Point(133, 57);
             this.authLoginTxt.Name = "authLoginTxt";
             this.authLoginTxt.Size = new System.Drawing.Size(100, 21);
             this.authLoginTxt.TabIndex = 1;
             // 
             // authPassTxt
             // 
-            this.authPassTxt.Location = new System.Drawing.Point(94, 90);
+            this.authPassTxt.Location = new System.Drawing.Point(133, 98);
             this.authPassTxt.Name = "authPassTxt";
             this.authPassTxt.PasswordChar = '*';
             this.authPassTxt.Size = new System.Drawing.Size(100, 21);
@@ -101,7 +102,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(26, 98);
+            this.label5.Location = new System.Drawing.Point(56, 101);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(44, 13);
             this.label5.TabIndex = 11;
@@ -110,7 +111,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(33, 57);
+            this.label4.Location = new System.Drawing.Point(56, 60);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(37, 13);
             this.label4.TabIndex = 9;
@@ -176,11 +177,11 @@
             // 
             // buttonReg
             // 
-            this.buttonReg.Location = new System.Drawing.Point(289, 97);
+            this.buttonReg.Location = new System.Drawing.Point(71, 135);
             this.buttonReg.Name = "buttonReg";
-            this.buttonReg.Size = new System.Drawing.Size(156, 23);
+            this.buttonReg.Size = new System.Drawing.Size(156, 30);
             this.buttonReg.TabIndex = 4;
-            this.buttonReg.Text = "Зарегистрировать";
+            this.buttonReg.Text = "Зарегистрироваться";
             this.buttonReg.UseVisualStyleBackColor = true;
             this.buttonReg.Click += new System.EventHandler(this.buttonReg_Click);
             // 
@@ -192,14 +193,16 @@
             this.regPasswordTxt.Size = new System.Drawing.Size(100, 21);
             this.regPasswordTxt.TabIndex = 6;
             // 
-            // Auth
+            // AuthView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(369, 265);
             this.Controls.Add(this.tabControl1);
-            this.Name = "Auth";
-            this.Text = "Auth";
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Name = "AuthView";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "LungCare";
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();

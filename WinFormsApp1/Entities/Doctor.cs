@@ -3,7 +3,7 @@
     /// <summary>
     /// Доктор
     /// </summary>
-    internal class Doctor
+    public class Doctor
     {
         /// <summary>
         /// ИД

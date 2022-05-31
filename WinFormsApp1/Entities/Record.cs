@@ -31,6 +31,14 @@
         }
 
         /// <summary>
+        /// Состояние обработки записи: 1 - проект, 0 - есть заключение
+        /// </summary>
+        public string ProcessingStateAsText
+        {
+            get { return ProcessingState == 1 ? "не обработано" : "есть заключение"; }
+        }
+
+        /// <summary>
         /// Имя доктора, который сделал заключение
         /// </summary>
         public string? DoctorName { get; set; }
