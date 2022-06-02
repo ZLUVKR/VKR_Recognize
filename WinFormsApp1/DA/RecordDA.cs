@@ -24,6 +24,7 @@ namespace Recognize.DA
                             PatientName = item["patient_fullname"].ToString(),
                             ImagePath = item["image_path"].ToString(),
                             Сonclusion = item["conclusion"].ToString(),
+                            СonclusionOfNeural = item["conclusion_of_neural"].ToString(),
                             DoctorName = item["doctor_fullname"].ToString(),
                         };
                         DateTime inputDate;
@@ -46,13 +47,14 @@ namespace Recognize.DA
         public void SaveRecord(Entities.Record record)
         {
 
-            using (var cmd = ExcelCmd($"update [record$] set conclusion = ?, doctor_fullname = ?, end_date = ? where id = ?"))
+            using (var cmd = ExcelCmd($"update [record$] set conclusion = ?, doctor_fullname = ?, end_date = ?, conclusion_of_neural = ? where id = ?"))
             {
                 CmdExecutor(cmd, delegate
                 {
                     cmd.Parameters.Add("@conclusion", OdbcType.VarChar).Value = record.Сonclusion;
                     cmd.Parameters.Add("@doctor_fullname", OdbcType.VarChar).Value = record.DoctorName;
                     cmd.Parameters.Add("@end_date", OdbcType.Date).Value = record.EndDate;
+                    cmd.Parameters.Add("@conclusion_of_neural", OdbcType.VarChar).Value = record.СonclusionOfNeural;
                     cmd.Parameters.Add("@id", OdbcType.Int).Value = record.Id;
 
                     cmd.ExecuteNonQuery();

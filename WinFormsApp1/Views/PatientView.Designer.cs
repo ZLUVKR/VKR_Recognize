@@ -38,15 +38,6 @@
             this.lblOpen = new System.Windows.Forms.Label();
             this.btnCreate = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.ProcessingStateAsText = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.patientNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ProcessingState = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.inputDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ImagePath = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.сonclusionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.doctorNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.endDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataSource = new System.Windows.Forms.BindingSource(this.components);
             this.grpFind = new System.Windows.Forms.GroupBox();
             this.btnClear = new System.Windows.Forms.Button();
@@ -58,6 +49,16 @@
             this.lblPatientName = new System.Windows.Forms.Label();
             this.cmbProcState = new System.Windows.Forms.ComboBox();
             this.lblProcState = new System.Windows.Forms.Label();
+            this.ProcessingStateAsText = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.patientNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ProcessingState = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.inputDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ImagePath = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.сonclusionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.СonclusionOfNeural = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.doctorNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.endDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataSource)).BeginInit();
@@ -84,6 +85,7 @@
             this.lblReport.Size = new System.Drawing.Size(88, 13);
             this.lblReport.TabIndex = 3;
             this.lblReport.Text = "Показать отчет";
+            this.lblReport.Visible = false;
             // 
             // btnReport
             // 
@@ -94,6 +96,7 @@
             this.btnReport.Size = new System.Drawing.Size(57, 58);
             this.btnReport.TabIndex = 2;
             this.btnReport.UseVisualStyleBackColor = false;
+            this.btnReport.Visible = false;
             // 
             // lblOpen
             // 
@@ -139,6 +142,7 @@
             this.inputDateDataGridViewTextBoxColumn,
             this.ImagePath,
             this.сonclusionDataGridViewTextBoxColumn,
+            this.СonclusionOfNeural,
             this.doctorNameDataGridViewTextBoxColumn,
             this.endDateDataGridViewTextBoxColumn});
             this.dataGridView1.DataSource = this.dataSource;
@@ -154,71 +158,12 @@
             this.dataGridView1.Location = new System.Drawing.Point(0, 234);
             this.dataGridView1.MultiSelect = false;
             this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.RowTemplate.Height = 23;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(844, 306);
             this.dataGridView1.TabIndex = 1;
             this.dataGridView1.SelectionChanged += new System.EventHandler(this.dataGridView1_SelectionChanged);
-            // 
-            // ProcessingStateAsText
-            // 
-            this.ProcessingStateAsText.DataPropertyName = "ProcessingStateAsText";
-            this.ProcessingStateAsText.HeaderText = "Статус обработки";
-            this.ProcessingStateAsText.Name = "ProcessingStateAsText";
-            this.ProcessingStateAsText.ReadOnly = true;
-            // 
-            // patientNameDataGridViewTextBoxColumn
-            // 
-            this.patientNameDataGridViewTextBoxColumn.DataPropertyName = "PatientName";
-            this.patientNameDataGridViewTextBoxColumn.HeaderText = "ФИО пациента";
-            this.patientNameDataGridViewTextBoxColumn.Name = "patientNameDataGridViewTextBoxColumn";
-            this.patientNameDataGridViewTextBoxColumn.Width = 120;
-            // 
-            // Id
-            // 
-            this.Id.DataPropertyName = "Id";
-            this.Id.HeaderText = "Id";
-            this.Id.Name = "Id";
-            this.Id.Visible = false;
-            // 
-            // ProcessingState
-            // 
-            this.ProcessingState.DataPropertyName = "ProcessingState";
-            this.ProcessingState.HeaderText = "ProcessingState";
-            this.ProcessingState.Name = "ProcessingState";
-            this.ProcessingState.ReadOnly = true;
-            this.ProcessingState.Visible = false;
-            // 
-            // inputDateDataGridViewTextBoxColumn
-            // 
-            this.inputDateDataGridViewTextBoxColumn.DataPropertyName = "InputDate";
-            this.inputDateDataGridViewTextBoxColumn.HeaderText = "Дата приема";
-            this.inputDateDataGridViewTextBoxColumn.Name = "inputDateDataGridViewTextBoxColumn";
-            // 
-            // ImagePath
-            // 
-            this.ImagePath.DataPropertyName = "ImagePath";
-            this.ImagePath.HeaderText = "R - снимок";
-            this.ImagePath.Name = "ImagePath";
-            // 
-            // сonclusionDataGridViewTextBoxColumn
-            // 
-            this.сonclusionDataGridViewTextBoxColumn.DataPropertyName = "Сonclusion";
-            this.сonclusionDataGridViewTextBoxColumn.HeaderText = "Заключение";
-            this.сonclusionDataGridViewTextBoxColumn.Name = "сonclusionDataGridViewTextBoxColumn";
-            this.сonclusionDataGridViewTextBoxColumn.Width = 180;
-            // 
-            // doctorNameDataGridViewTextBoxColumn
-            // 
-            this.doctorNameDataGridViewTextBoxColumn.DataPropertyName = "DoctorName";
-            this.doctorNameDataGridViewTextBoxColumn.HeaderText = "ФИО доктора";
-            this.doctorNameDataGridViewTextBoxColumn.Name = "doctorNameDataGridViewTextBoxColumn";
-            // 
-            // endDateDataGridViewTextBoxColumn
-            // 
-            this.endDateDataGridViewTextBoxColumn.DataPropertyName = "EndDate";
-            this.endDateDataGridViewTextBoxColumn.HeaderText = "Дата заключения";
-            this.endDateDataGridViewTextBoxColumn.Name = "endDateDataGridViewTextBoxColumn";
             // 
             // dataSource
             // 
@@ -331,6 +276,73 @@
             this.lblProcState.TabIndex = 0;
             this.lblProcState.Text = "Статус обработки";
             // 
+            // ProcessingStateAsText
+            // 
+            this.ProcessingStateAsText.DataPropertyName = "ProcessingStateAsText";
+            this.ProcessingStateAsText.HeaderText = "Статус обработки";
+            this.ProcessingStateAsText.Name = "ProcessingStateAsText";
+            this.ProcessingStateAsText.ReadOnly = true;
+            // 
+            // patientNameDataGridViewTextBoxColumn
+            // 
+            this.patientNameDataGridViewTextBoxColumn.DataPropertyName = "PatientName";
+            this.patientNameDataGridViewTextBoxColumn.HeaderText = "ФИО пациента";
+            this.patientNameDataGridViewTextBoxColumn.Name = "patientNameDataGridViewTextBoxColumn";
+            this.patientNameDataGridViewTextBoxColumn.Width = 120;
+            // 
+            // Id
+            // 
+            this.Id.DataPropertyName = "Id";
+            this.Id.HeaderText = "Id";
+            this.Id.Name = "Id";
+            this.Id.Visible = false;
+            // 
+            // ProcessingState
+            // 
+            this.ProcessingState.DataPropertyName = "ProcessingState";
+            this.ProcessingState.HeaderText = "ProcessingState";
+            this.ProcessingState.Name = "ProcessingState";
+            this.ProcessingState.ReadOnly = true;
+            this.ProcessingState.Visible = false;
+            // 
+            // inputDateDataGridViewTextBoxColumn
+            // 
+            this.inputDateDataGridViewTextBoxColumn.DataPropertyName = "InputDate";
+            this.inputDateDataGridViewTextBoxColumn.HeaderText = "Дата приема";
+            this.inputDateDataGridViewTextBoxColumn.Name = "inputDateDataGridViewTextBoxColumn";
+            // 
+            // ImagePath
+            // 
+            this.ImagePath.DataPropertyName = "ImagePath";
+            this.ImagePath.HeaderText = "R - снимок";
+            this.ImagePath.Name = "ImagePath";
+            // 
+            // сonclusionDataGridViewTextBoxColumn
+            // 
+            this.сonclusionDataGridViewTextBoxColumn.DataPropertyName = "Сonclusion";
+            this.сonclusionDataGridViewTextBoxColumn.HeaderText = "Заключение";
+            this.сonclusionDataGridViewTextBoxColumn.Name = "сonclusionDataGridViewTextBoxColumn";
+            this.сonclusionDataGridViewTextBoxColumn.Width = 110;
+            // 
+            // СonclusionOfNeural
+            // 
+            this.СonclusionOfNeural.DataPropertyName = "СonclusionOfNeural";
+            this.СonclusionOfNeural.HeaderText = "Заключение НС";
+            this.СonclusionOfNeural.Name = "СonclusionOfNeural";
+            this.СonclusionOfNeural.Width = 110;
+            // 
+            // doctorNameDataGridViewTextBoxColumn
+            // 
+            this.doctorNameDataGridViewTextBoxColumn.DataPropertyName = "DoctorName";
+            this.doctorNameDataGridViewTextBoxColumn.HeaderText = "ФИО доктора";
+            this.doctorNameDataGridViewTextBoxColumn.Name = "doctorNameDataGridViewTextBoxColumn";
+            // 
+            // endDateDataGridViewTextBoxColumn
+            // 
+            this.endDateDataGridViewTextBoxColumn.DataPropertyName = "EndDate";
+            this.endDateDataGridViewTextBoxColumn.HeaderText = "Дата заключения";
+            this.endDateDataGridViewTextBoxColumn.Name = "endDateDataGridViewTextBoxColumn";
+            // 
             // PatientView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -381,6 +393,7 @@
         private DataGridViewTextBoxColumn inputDateDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn ImagePath;
         private DataGridViewTextBoxColumn сonclusionDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn СonclusionOfNeural;
         private DataGridViewTextBoxColumn doctorNameDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn endDateDataGridViewTextBoxColumn;
     }

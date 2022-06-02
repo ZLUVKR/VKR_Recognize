@@ -3,11 +3,13 @@ namespace Recognize.Views
     public partial class PatientView : Form
     {
         public Entities.Doctor CurrentDoctor;
+
+        string predictionPath = @"c:\temp\predict.txt";
         public PatientView()
         {
             InitializeComponent();
             Presenter.GetDocument();
-            this.dataSource = new BindingSource();
+            dataSource = new BindingSource();
             dataSource.DataSource = Presenter.Document;
             dataGridView1.DataSource = dataSource;
             dataGridView1.ClearSelection();
@@ -121,6 +123,7 @@ namespace Recognize.Views
 
         public void FormClosed(object sender, FormClosedEventArgs e)
         {
+            
             this.Show();
         }
     }

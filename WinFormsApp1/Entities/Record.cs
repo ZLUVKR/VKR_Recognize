@@ -23,6 +23,11 @@
         public string? Сonclusion { get; set; }
 
         /// <summary>
+        /// Заключение нейронной сети
+        /// </summary>
+        public string? СonclusionOfNeural { get; set; }
+
+        /// <summary>
         /// Состояние обработки записи: 1 - проект, 0 - есть заключение
         /// </summary>
         public int ProcessingState
